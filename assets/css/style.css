@@ -1,25 +1,73 @@
-body { 
-    padding-bottom: 70px; 
+body {
+    margin:0;
+    box-sizing: border-box;
+    padding-bottom: 70px;
+    margin-top: 50px;
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  font-color: #626262;
+  line-height: 24px;
+}
+    
+
+a {
+  color: #626262; }
+  a:hover {
+    color: #FFC107; 
+    }
+
+button{
+    margin:20px;
+        
+    }
+
+.navbar {
+    text-transform:uppercase;
+    margin-bottom: 0;
+    padding: 5px;
+    background-color: #262626;
+    z-index: 9999;
+    border: 0;
+    font-size: 14px !important;
+    line-height: 1.42857143 !important;
+    border-radius: 0;
 }
 
-.navbar{
-    text-transform:uppercase;
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
 }
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #35fd21 !important;
+    background-color: none !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+#mainNav .navbar-header a:hover {
+    opacity: 0.7; }
+
 header{
     background-image: url(/images/1.jpeg);
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
     background-size: cover;
-    -o-background-size: cover;
     text-align: center;
     color: #fff;
+/*    height: 90vh;*/
+}
+
+header:hover {
+/*    background-size: 110% 110%;*/
+/*    filter:brightness(80%);*/
 }
 
 header .intro-text {
-  padding-top: 100px;
+  padding-top: 70px;
   padding-bottom: 50px;
 }
 
@@ -68,8 +116,58 @@ header .intro-text .intro-heading {
   }
 }
 
-   
-    
+section{
+    padding-bottom: 100px;
+    }
 
-    
+/*
+#leftNav{
+    position: fixed;
+}
+*/
+
+#introduction img{
+    padding:20px;
+}
+
+#introduction p{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+
+.article {
+    border: none;
+    border-radius: 0;
+    padding:20px;
+    background: #fff;
+
+
+}
+
+.article img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+}
+
+
+#pomocEksperta {
+    background-color: #efebeb;
+}
+
+.u1{
+    background-image: url(/images/pic1.jpg);
+}
+
+#porady {
+    background-color: #efebeb;
+}
+
+
+
+
+
+
 
