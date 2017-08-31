@@ -1,106 +1,158 @@
 <!DOCTYPE html>
 <html>
-    <head>
-     
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Planujesz zakup działki pod bydowę domu? Sprawdz ją! Wygeneruj swój własny raport lub skorzystaj z pomocy ekspetra.">
-        <title>Stwórz raport</title>
-        
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,900&amp;subset=latin-ext" rel="stylesheet">
 
-        <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        
-        <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="assets/js/app.js"></script>
-       
+<head>
 
-    </head>
-    
-    <body>
-        
-        <!---------------------Navbar---------------------------------------->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Planujesz zakup działki pod bydowę domu? Sprawdz ją! Wygeneruj swój własny raport lub skorzystaj z pomocy ekspetra.">
+    <title>Stwórz raport</title>
 
-        <nav id="mainNav" class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <script src="http://mapy.geoportal.gov.pl/iMapLite/js/imapLiteApi-core.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        function initMap() {
+            ILITEAPI.init({
+                "divId": "iapi",
+                "width": 1000,
+                "height": 500,
+                "activeGpMapId": "gp0",
+                "activeGpMaps": ["gp0", "gp1"],
+                "activeGpActions": ["pan", "fullExtent"],
+                "scale": 2000,
+                "marker": [{
+                    "x": 362269,
+                    "y": 362264,
+                    "scale": 2000,
+                    "opts": {
+                        "title": "dymek nr 1",
+                        "content": "dymek"
+                    }
+                }, {
+                    "x": 361968,
+                    "y": 362234,
+                    "scale": 2000,
+                    "opts": {
+                        "title": "dymek nr 2",
+                        "content": "dymek"
+                    }
+                }]
+            });
+        }
+
+    </script>
+    <script src="http://mapy.geoportal.gov.pl/iMapLite/js/imapLiteApi-core.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
+
+
+</head>
+
+<body onload="initMap()" data-spy="scroll" data-target="#myScrollspy" data-offset="0">
+
+    <!---------------------Navbar---------------------------------------->
+
+    <nav id="mainNav" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>  
                     </button>
-                    <a class="navbar-brand page-scroll" href="#page-top"><img src= "images/logo2.png" height="30" alt="sprawdzdzialke.pl"></a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="hidden">
-                            <a href="#page-top"></a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="#stworz-raport">Stwórz raport</a>
-                        </li>  
-                        <li>
-                            <a class="page-scroll" href="#pomoc">Pomoc eksperta</a>
-                        </li>  
-                        
-                        <li>
-                            <a class="page-scroll" href="#porady">Porady</a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="#kontakt">Kontakt</a>
-                        </li>
-                    </ul>
-                </div>  
+                <a class="navbar-brand page-scroll" href="#page-top"><img src="images/logo2.png" height="30" alt="sprawdzdzialke.pl"></a>
             </div>
-        </nav>
-        
-       
-        <!------------------ Menu ------------------------------------------->
-        
-        <div id="leftNav" class="container-fluid" >
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 leftNav">
-                        <ol>
-                            <li><a href="#numerDzialki">Ustalenie nr działki</a></li>
-                            <li><a href="#MPZP">Sprawdzenie MPZP</a></li>
-                            <li><a href="#sasiedztwo">Sprawdzenie sąsiedztwa</a></li>
-                            <li><a href="#uzytekGruntowy">Ustalenie użytku gruntowego</a></li>
-                            <li><a href="#dostepDoDrogi">Ustalenie dostępu do drogi</a></li>
-                            <li><a href="#ograniczenia">Ograniczenia wynikające z innych przepisów</a></li>
-                        
-                        </ol>
-                    </div>  
-                </div>
+
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#stworz-raport">Stwórz raport</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#pomoc">Pomoc eksperta</a>
+                    </li>
+
+                    <li>
+                        <a class="page-scroll" href="#porady">Porady</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#kontakt">Kontakt</a>
+                    </li>
+                </ul>
             </div>
         </div>
-                    
-        <!------------------ Krok 1------------------------------------------->  
-                    
-                    <div class="col-md-8">
-                        <section class="steps" id="numerDzialki">
-                        <p class="step">Krok 1</p>
-                        <h2>Ustalenie nr działki</h2>
-                        <p>Gdy wypatrzysz działkę która Ci się podoba/znajdziesz ogłoszenie o sprzedaży działki:
-                            Podstawową czynnością jest ustalenie nr działki i obrębu ewidencyjnego w którym się znajduje.
-                            Pozwoli to na wyszukiwanie informacji w dokumentach planistycznych oraz ułatwi skierowanie zapytania do urzędu gminy.</p>
-                        <p>Nr porządkowy działki można ustalić np. na portalu goeportal.gov pl http://mapy.geoportal.gov.pl/imap/?gpmap=gp0&actions=acShowServices_KATASTER
-                        
-                        <!---tutaj jakies API do geoportalu--></---tutaj></p>
-                           
+    </nav>
 
-                        <p>Jeżeli nie możesz odnaleźć działki poszukaj na portalu geodezyjnym starostwa w którym działka się znajduje np.
-                            powiat kartuski: https://kartuski.webewid.pl/is2/iEwid/
-                            powiat gdański: https://gdanski.webewid.pl:1443/webewid/is2/iEwid/
-                            powiat pucki: https://geodane.puck.pl/e-uslugi/portal-mapowy
-                            powiat wejherowski: http://wejherowski.e-mapa.net/</p> 
-                        </section>
-                
-                
+
+    <!------------------ leftMenu------------------------------------------->
+
+
+
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-sm-3" id="myScrollspy">
+
+                <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="0" id="sidebar">
+                    <li><a href="#numerDzialki">Ustalenie nr działki<span id ="ok" class="glyphicon glyphicon-ok form-control-feedback"></span></a></li>
+                    <li><a href="#MPZP">Sprawdzenie MPZP</a></li>
+                    <li><a href="#sasiedztwo">Sprawdzenie sąsiedztwa</a></li>
+                    <li><a href="#uzytekGruntowy">Ustalenie użytku gruntowego</a></li>
+                    <li><a href="#dostepDoDrogi">Ustalenie dostępu do drogi</a></li>
+                    <li><a href="#ograniczenia">Ograniczenia wynikające z innych przepisów</a></li>
+
+                </ul>
+
+            </nav>
+
+            <!------------------ Kroki------------------------------------------->
+
+
+            <div class="col-sm-9 col-xs-12" id="mainCol">
+
+                <h2 id="numerDzialki">Ustalenie nr działki</h2>
+
+                Gdy wypatrzysz działkę która Ci się podoba/znajdziesz ogłoszenie o sprzedaży działki:
+                <ol>
+                    <li>Podstawową czynnością jest ustalenie nr działki i obrębu ewidencyjnego w którym się znajduje. Pozwoli to na wyszukiwanie informacji w dokumentach planistycznych oraz ułatwi skierowanie zapytania do urzędu gminy. Nr porządkowy działki można ustalić poniżej:</li>
+                </ol>
+                <div id="iapi"></div>
+
+                <br> Jeżeli nie możesz odnaleźć działki poszukaj na portalu geodezyjnym starostwa w którym działka się znajduje np.:
+                <ul>
+                    <li>powiat gdański: <a href="https://gdanski.webewid.pl:1443/webewid/is2/iEwid/">gdanski.webewid.pl</a></li>
+                    <li>powiat kartuski: <a href="https://kartuski.webewid.pl/is2/iEwid/">kartuski.webewid.pl</a></li>
+                    <li>powiat pucki: <a href="https://geodane.puck.pl/e-uslugi/portal-mapowy">geodane.puck.pl</a></li>
+                    <li>powiat wejherowski: <a href="http://wejherowski.e-mapa.net/">wejherowski.e-mapa.net</a></li>
+                </ul>
+
+
+                <form class="form-inline">
                     <div class="form-group">
+                        <label for="naDzialki">Wpisz swój numer działki:</label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+
+                    <button type="button" class="btn btn-default butt">Zapisz</button>
+
+                </form>
+
+
+                <!--
+				<div class="form-group">
                       <label for="sel1">Wybierz odpowiedź do raportu:</label>
                       <select class="form-control" id="sel1">
                         <option>1</option>
@@ -108,99 +160,84 @@
                         <option>3</option>
                         <option>4</option>
                       </select>
-                    </div>
-                
-                    <div class="form-group">
-                      <label for="comment">Dodatkowe uwagi:</label>
-                      <textarea class="form-control" rows="5" id="comment"></textarea>
-                    </div>
-                
-        <!------------------ Krok 2------------------------------------------->  
-                
-                        <section class="steps" >
-                            <p class="step" id="MPZP">Krok 2</p>
-                            <h2>Sprawdzenie MPZP – warunki zabudowy</h2>
-                            <p> Możliwy sposób zagospodarowania działki określony jest w miejscowym planie zagospodarowania      przestrzennego, a w przypadku jego braku w decyzji o warunkach zabudowy.</p>
-                            <p>MPZP znajdziemy w Biuletynie Informacji Publicznej danej Gminy http://www.bip.kartuzy.pl/ lub wiele gmin udostępnia MPZP poprzez portale informacji przestrzennej. http://portal.gison.pl/zukowo/</p>
-                            <p>W przypadku braku MPZP jeżeli chcemy zabudować działkę musimy wystąpić do gminy o wydanie decyzji o warunkach zabudowy. W tej sprawie najlepiej kontaktować się z urzędem gminy – masz problem skontaktuj się.</p>
-
-                        </section>
-                
-        <!------------------ Krok 3-------------------------------------------> 
-                
-                        <div class="steps">
-                            <p class="step" id="sasiedztwo">Krok 3</p>
-                            <h2>Sprawdzenie sąsiedztwa</h2>
-                            <p> Polityka przestrzenna gminy ustalona jest w Studium uwarunkowań i kierunków zagospodarowania przestrzennego np. http://www.bip.kartuzy.pl/modules.php?name=Content&pa=showpage&pid=209
-                            </p>
-                            <p>JW dokumencie tym odnajdziemy informację o kierunkach polityki przestrzennej, np. jaka funkcja będzie dominować w rejonie wybranej przez Nas działki? Czy planowana są inwestycje drogowe/ infrastrukturalne (np. linie wysokiego napięcia? Formy ochrony przyrody na terenie gminy? Formy ochrony konserwatorskiej?</p>
-                            
-                        </div>
-                
-        <!------------------ Krok 4-------------------------------------------> 
-                
-                        <div class="steps">
-                            <p class="step" id="uzytekGruntow">Krok 4</p>
-                            <h2>Ustalenie użytku gruntowego</h2>
-                            <p> Użytek gruntowy najlepiej sprawdzić na portalu geodezyjnym starostw.</p>
-                            <p>Jeżeli działka przeznaczona jest w MPZP pod zabudowę to musimy jedynie sprawdzić czy działka nie jest użytkiem rolnym klasy I – IIIb – opłata za wyłączenie z produkcji rolnej lub użytkiem Ls – opłata za wyłączenie z produkcji leśnej.</p>
-                            <p>Jeżeli nie ma MPZP to dla gruntów rolnych klasy I-IIIb i gruntów leśnych najczęściej nie uzyskamy decyzji o warunkach zabudowy – brak możliwości zabudowy pod budownictwo mieszkaniowe.</p>
-
-                        </div>
-                
-         <!------------------ Krok 5-------------------------------------------> 
-                
-                        <div class="steps">
-                            <p class="step" id="uzytekGruntowy">Krok 5</p>
-                            <h2>Ustalenie dostępu do drogi</h2>
-                            <p> Działka jest budowlana jeżeli posiada dostęp do drogi publicznej. Dostęp do drogi publicznej może być:
-                                <ul>
-                                    <li>bezpośredni – telefon do urzędu danej gminy</li>
-                                    <li>przez inną działkę której jesteśmy właścicielami/współwłaścicielami</li>
-                                    <li></li>
-                                    przez służebność przejazdu – informacja o służebności znajduje się w księdze wieczystej: zapisy księgi wieczystej możemy sprawdzić na stronie: https://przegladarka-ekw.ms.gov.pl/eukw_prz/KsiegiWieczyste/wyszukiwanieKW?komunikaty=true&kontakt=true&okienkoSerwisowe=false
-                                </ul>
-                            </p>
-
-                        </div>
-                
-         <!------------------ Krok 6-------------------------------------------> 
-                
-                        <div class="steps">
-                            <p class="step" id="ograniczenia">Krok 6</p>
-                            <h2>Ograniczenia wynikające z innych przepisów</h2>
-                            <p> Czy działka znajduje się w granicach obszarów narażonych na niebezpieczeństwo powodzi: http://www.isok.gov.pl/pl/mapy-zagrozenia-powodziowego-i-mapy-ryzyka-powodziowego
-                            Ograniczenia wynikają z Prawa Wodnego
-                            .</p>
-                            <p>Czy działka znajduje się w granicach form ochrony przyrody:
-                            http://geoserwis.gdos.gov.pl/mapy/
-                            Ograniczenia wynikają z Prawa Ochrony Przyrody i uchwał dla poszczególnych obszarów
-                            </p>
-                            <p>JCzy działka znajduje się w granicach stref ochronnych ujęć wody?
-                            Granice np. ze Studium uwarunkowań i kierunków zagospodarowania przestrzennego np. http://www.bip.kartuzy.pl/modules.php?name=Content&pa=showpage&pid=209
-                            ograniczenia w Rozporządzenia Dyrektorów Regionalnych Zarządów Gospodarki Wodnej, np. http://www.bip.rzgw.gda.pl/?mod=bip&path=153,112,239
-                            </p>
-
-                        </div>
-                        
-                        
-                        
-                        
-                    </div>
-        
-        
-       
-        <!---------------Footer---------------------------------------------->
-        
-        <footer class="container-fluid">
-            <div class="container">
-                <div class="row">
-
-                
                 </div>
+
+				<div class="form-group">
+				  <label for="comment">Dodatkowe uwagi:</label>
+				  <textarea class="form-control" rows="5" id="comment"></textarea>
+				</div>
+-->
+
+                <hr>
+                <!------------------ Krok 1------------------------------------------->
+
+                <h2 id="MPZP">Sprawdzenie MPZP – warunki zabudowy</h2>
+                <p> Możliwy sposób zagospodarowania działki określony jest w miejscowym planie zagospodarowania przestrzennego, a w przypadku jego braku w decyzji o warunkach zabudowy.</p>
+                <p>MPZP znajdziemy w Biuletynie Informacji Publicznej danej Gminy http://www.bip.kartuzy.pl/ lub wiele gmin udostępnia MPZP poprzez portale informacji przestrzennej. http://portal.gison.pl/zukowo/</p>
+                <p>W przypadku braku MPZP jeżeli chcemy zabudować działkę musimy wystąpić do gminy o wydanie decyzji o warunkach zabudowy. W tej sprawie najlepiej kontaktować się z urzędem gminy – masz problem skontaktuj się.</p>
+
+                <hr>
+
+                <!------------------ Krok ------------------------------------------->
+
+                <h2 id="sasiedztwo">Sprawdzenie sąsiedztwa</h2>
+                <p> Polityka przestrzenna gminy ustalona jest w Studium uwarunkowań i kierunków zagospodarowania przestrzennego np. http://www.bip.kartuzy.pl/modules.php?name=Content&pa=showpage&pid=209
+                </p>
+                <p>JW dokumencie tym odnajdziemy informację o kierunkach polityki przestrzennej, np. jaka funkcja będzie dominować w rejonie wybranej przez Nas działki? Czy planowana są inwestycje drogowe/ infrastrukturalne (np. linie wysokiego napięcia? Formy ochrony przyrody na terenie gminy? Formy ochrony konserwatorskiej?</p>
+
+                <hr>
+                <!------------------ Krok ------------------------------------------->
+
+                <h2 id="uzytekGruntowy">Ustalenie użytku gruntowego</h2>
+                <p> Użytek gruntowy najlepiej sprawdzić na portalu geodezyjnym starostw.</p>
+                <p>Jeżeli działka przeznaczona jest w MPZP pod zabudowę to musimy jedynie sprawdzić czy działka nie jest użytkiem rolnym klasy I – IIIb – opłata za wyłączenie z produkcji rolnej lub użytkiem Ls – opłata za wyłączenie z produkcji leśnej.</p>
+                <p>Jeżeli nie ma MPZP to dla gruntów rolnych klasy I-IIIb i gruntów leśnych najczęściej nie uzyskamy decyzji o warunkach zabudowy – brak możliwości zabudowy pod budownictwo mieszkaniowe.</p>
+
+                <hr>
+                <!------------------ Krok ------------------------------------------->
+
+                <h2 id="dostepDoDrogi">Ustalenie dostępu do drogi</h2>
+                <div> Działka jest budowlana jeżeli posiada dostęp do drogi publicznej. Dostęp do drogi publicznej może być:
+                    <ul>
+                        <li>bezpośredni – telefon do urzędu danej gminy</li>
+                        <li>przez inną działkę której jesteśmy właścicielami/współwłaścicielami</li>
+                        <li></li>
+                        przez służebność przejazdu – informacja o służebności znajduje się w księdze wieczystej: zapisy księgi wieczystej możemy sprawdzić na stronie: https://przegladarka-ekw.ms.gov.pl/eukw_prz/KsiegiWieczyste/wyszukiwanieKW?komunikaty=true&kontakt=true&okienkoSerwisowe=false
+                    </ul>
+                </div>
+
+                <!------------------ Krok ------------------------------------------->
+
+                <hr>
+
+                <h2 id="ograniczenia">Ograniczenia wynikające z innych przepisów</h2>
+                <p> Czy działka znajduje się w granicach obszarów narażonych na niebezpieczeństwo powodzi: http://www.isok.gov.pl/pl/mapy-zagrozenia-powodziowego-i-mapy-ryzyka-powodziowego Ograniczenia wynikają z Prawa Wodnego .
+                </p>
+                <p>Czy działka znajduje się w granicach form ochrony przyrody: http://geoserwis.gdos.gov.pl/mapy/ Ograniczenia wynikają z Prawa Ochrony Przyrody i uchwał dla poszczególnych obszarów
+                </p>
+                <p>Czy działka znajduje się w granicach stref ochronnych ujęć wody? Granice np. ze Studium uwarunkowań i kierunków zagospodarowania przestrzennego np. http://www.bip.kartuzy.pl/modules.php?name=Content&pa=showpage&pid=209 ograniczenia w Rozporządzenia Dyrektorów Regionalnych Zarządów Gospodarki Wodnej, np. http://www.bip.rzgw.gda.pl/?mod=bip&path=153,112,239
+                </p><br><br>
+
+
+                <hr>
+
             </div>
-        </footer>
-        
-    </body>
-    
+        </div>
+    </div>
+
+
+
+    <!---------------Footer---------------------------------------------->
+
+    <footer class="container-fluid">
+        <div class="container">
+            <div class="row">
+
+
+            </div>
+        </div>
+    </footer>
+
+</body>
+
 </html>
