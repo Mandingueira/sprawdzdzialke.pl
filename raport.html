@@ -3,14 +3,24 @@
 
 <head>
 
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Planujesz zakup działki pod bydowę domu? Sprawdz ją! Wygeneruj swój własny raport lub skorzystaj z pomocy ekspetra.">
-    <title>Stwórz raport</title>
+    <title>Sprawdź działkę przed kupnem</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900&amp;subset=latin-ext" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/wow.min.js"></script>
+    <script>
+        new WOW().init()
+
+    </script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
 
     <script src="http://mapy.geoportal.gov.pl/iMapLite/js/imapLiteApi-core.js" type="text/javascript" charset="utf-8"></script>
 
@@ -21,7 +31,7 @@
                 "width": 1000,
                 "height": 500,
                 "activeGpMapId": "gp0",
-                "activeGpMaps": ["gp0", "gp1"],
+                "activeGpMaps": ["gp4"],
                 "activeGpActions": ["pan", "fullExtent"],
                 "scale": 2000,
                 "marker": [{
@@ -43,14 +53,9 @@
                 }]
             });
         }
+
     </script>
     <script src="http://mapy.geoportal.gov.pl/iMapLite/js/imapLiteApi-core.js" type="text/javascript" charset="utf-8"></script>
-
-    <script type="text/javascript" src="assets/js/jquery-3.2.1.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/app.js"></script>
 
 
 </head>
@@ -97,17 +102,18 @@
     <!------------------ leftMenu------------------------------------------->
 
 
-    <div class="container ">
+    <div class="container">
         <div class="row">
             <nav class="col-sm-3" id="myScrollspy">
 
                 <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="0" id="sidebar">
-                    <li><a href="#numerDzialki">Ustalenie nr działki<span id ="ok" class="glyphicon glyphicon-ok form-control-feedback"></span></a></li>
-                    <li><a href="#MPZP">Sprawdzenie MPZP</a></li>
+                    <li id="liNumer"><a href="#numerDzialki">Ustalenie nr działki<span  class="glyphicon glyphicon-ok form-control-feedback ok"></span></a></li>
+                    <li id="liMpzp"><a href="#MPZP">Sprawdzenie MPZP<span class="glyphicon glyphicon-ok form-control-feedback ok"></span></a></li>
                     <li><a href="#sasiedztwo">Sprawdzenie sąsiedztwa</a></li>
                     <li><a href="#uzytekGruntowy">Ustalenie użytku gruntowego</a></li>
                     <li><a href="#dostepDoDrogi">Ustalenie dostępu do drogi</a></li>
                     <li><a href="#ograniczenia">Ograniczenia wynikające z innych przepisów</a></li>
+                    <li><a href="#podglad">Podglad raportu</a></li>
 
                 </ul>
 
@@ -137,48 +143,103 @@
 
                 <form class="form-inline">
                     <div class="form-group">
-                        <label for="naDzialki">Wpisz swój numer działki:</label>
-                        <input type="email" class="form-control" id="email">
+                        <label for="nrDzialki">Wpisz swój numer działki:</label>
+                        <input type="text" class="form-control" id="nrDzialki">
                     </div>
 
                     <button type="button" class="btn btn-default butt">Zapisz</button>
+                    <span id="status"></span>
+
 
                 </form>
 
 
-                <!--
-				<div class="form-group">
-                      <label for="sel1">Wybierz odpowiedź do raportu:</label>
-                      <select class="form-control" id="sel1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                      </select>
-                </div>
-
-				<div class="form-group">
-				  <label for="comment">Dodatkowe uwagi:</label>
-				  <textarea class="form-control" rows="5" id="comment"></textarea>
-				</div>
--->
-
                 <hr>
-                <!------------------ Krok 1------------------------------------------->
+                <!------------------ Krok ------------------------------------------->
 
                 <h2 id="MPZP">Sprawdzenie MPZP – warunki zabudowy</h2>
-                <p> Możliwy sposób zagospodarowania działki określony jest w miejscowym planie zagospodarowania przestrzennego, a w przypadku jego braku w decyzji o warunkach zabudowy.</p>
-                <p>MPZP znajdziemy w Biuletynie Informacji Publicznej danej Gminy http://www.bip.kartuzy.pl/ lub wiele gmin udostępnia MPZP poprzez portale informacji przestrzennej. http://portal.gison.pl/zukowo/</p>
-                <p>W przypadku braku MPZP jeżeli chcemy zabudować działkę musimy wystąpić do gminy o wydanie decyzji o warunkach zabudowy. W tej sprawie najlepiej kontaktować się z urzędem gminy – masz problem skontaktuj się.</p>
+                <p> Możliwy sposób zagospodarowania działki określony jest w miejscowym planie zagospodarowania przestrzennego (MPZP), a w przypadku jego braku w decyzji o warunkach zabudowy.</p>
+                <p>MPZP znajdziemy w Biuletynie Informacji Publicznej danej Gminy, np: <a href="http://www.bip.kartuzy.pl/">www.bip.kartuzy.pl</a> lub wiele gmin udostępnia MPZP poprzez portale informacji przestrzennej, np: <a href="http://portal.gison.pl/zukowo/">www.portal.gison.pl/zukowo</a></p>
+                <p>W przypadku braku MPZP jeżeli chcemy zabudować działkę musimy wystąpić do gminy o wydanie decyzji o warunkach zabudowy. W tej sprawie najlepiej kontaktować się z urzędem gminy.</p>
+
+                <form id="formMpzp">
+                    <div class="form-group first">
+                        <label for="CzyMPZP">Czy jest dla Twojej działki miejscowy plan zagospodarowania przestrzennego (MPZP)?</label><br>
+                        <label class="radio-inline"><input type="radio" name="optradio" value="tak">tak</label>
+                        <label class="radio-inline"><input type="radio" name="optradio" value="nie">nie</label>
+                    </div>
+
+                    <div class="form-group second">
+                        <label for="CzyDecyzja">Czy jest decyzja o warunkach zabudowy?</label><br>
+                        <label class="radio-inline"><input type="radio" name="optradio1" disabled="disabled" value="tak">tak</label>
+                        <label class="radio-inline"><input type="radio" name="optradio1" disabled="disabled" value="nie">nie</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CzyDecyzja">Wybierz przeznaczenie:</label>
+                        <select disabled="disabled" class="form-control" id="przeznaczenie">
+                            <option disabled selected="selected" value="0" >wybierz<option>
+                            <option value="1" >zabudowa mieszkaniowa jednorodzinna</option>
+                            <option value="2">zabudowa mieszkaniowa + usługi</option>
+                            <option value="3">usługi z możliwością budowy mieszkania</option>
+                            <option value="4">przemysłowe</option>
+                            <option value="5">przemysłowe z możliwością budowy mieszkania</option>
+                            <option value="6">rolne</option>
+                            <option value="7">zieleń</option>
+                            <option value="8">las</option>
+                            <option value="9">inne</option>
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment">Dodatkowe uwagi:</label>
+                        <textarea class="form-control" rows="5" id="uwagi"></textarea>
+                    </div>
+
+                    <button type="button" class="btn btn-default">Zapisz</button>
+                    <span id="status-dzialki"></span>
+
+                </form>
 
                 <hr>
 
                 <!------------------ Krok ------------------------------------------->
 
                 <h2 id="sasiedztwo">Sprawdzenie sąsiedztwa</h2>
-                <p> Polityka przestrzenna gminy ustalona jest w Studium uwarunkowań i kierunków zagospodarowania przestrzennego np. http://www.bip.kartuzy.pl/modules.php?name=Content&pa=showpage&pid=209
+                <p> Polityka przestrzenna gminy ustalona jest w Studium uwarunkowań i kierunków zagospodarowania przestrzennego np. <a href="http://www.bip.kartuzy.pl/modules.php?name=Content&pa=showpage&pid=209">http://www.bip.kartuzy.pl</a>
                 </p>
-                <p>JW dokumencie tym odnajdziemy informację o kierunkach polityki przestrzennej, np. jaka funkcja będzie dominować w rejonie wybranej przez Nas działki? Czy planowana są inwestycje drogowe/ infrastrukturalne (np. linie wysokiego napięcia? Formy ochrony przyrody na terenie gminy? Formy ochrony konserwatorskiej?</p>
+                <p>W dokumencie tym odnajdziemy informację o kierunkach polityki przestrzennej, np. jaka funkcja będzie dominować w rejonie wybranej przez Nas działki? Czy planowana są inwestycje drogowe/ infrastrukturalne (np. linie wysokiego napięcia? Formy ochrony przyrody na terenie gminy? Formy ochrony konserwatorskiej?</p>
+
+<form>
+                    
+                    <p>Wybierz sąsiedztwo:</p>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="sąsiedztwo planowanych dróg o znaczeniu krajobrazowym (krajowe, ekspresowe, autostrady)">sąsiedztwo planowanych dróg o znaczeniu krajobrazowym (krajowe, ekspresowe, autostrady)i</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="sąsiedztwo planowanych linii elektroenergetycznych (110kV, 220kV, 400KvU)">sąsiedztwo planowanych linii elektroenergetycznych (110kV, 220kV, 400KvU</label>
+                    </div>             
+                    
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="sąsiedztwo innych znaczących inwestycji infrastrukturalnych">sąsiedztwo innych znaczących inwestycji infrastrukturalnych</label>
+                    </div>  
+                    
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="sąsiedztwo terenów przemysłowych">sąsiedztwo terenów przemysłowych</label>
+                    </div>                    
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="teren w studium zeash zakażeń zabudowy">teren w studium zeash zakażeń zabudowy</label>
+                    </div>
+                    
+               
+                <div class="form-group">
+                    <label for="comment">Twoje dodatkowe uwagi:</label>
+                    <textarea class="form-control" rows="5" id="uwagi" placeholder="wpisz uwagi"></textarea>
+                </div>
+
+                <button type="button" class="btn btn-default butt">Zapisz</button>
+
+                </form>
 
                 <hr>
                 <!------------------ Krok ------------------------------------------->
@@ -187,6 +248,33 @@
                 <p> Użytek gruntowy najlepiej sprawdzić na portalu geodezyjnym starostw.</p>
                 <p>Jeżeli działka przeznaczona jest w MPZP pod zabudowę to musimy jedynie sprawdzić czy działka nie jest użytkiem rolnym klasy I – IIIb – opłata za wyłączenie z produkcji rolnej lub użytkiem Ls – opłata za wyłączenie z produkcji leśnej.</p>
                 <p>Jeżeli nie ma MPZP to dla gruntów rolnych klasy I-IIIb i gruntów leśnych najczęściej nie uzyskamy decyzji o warunkach zabudowy – brak możliwości zabudowy pod budownictwo mieszkaniowe.</p>
+
+                <form>
+
+                    <div class="form-group">
+                        <label for="grunty">Wybierz rodzaj gruntu:</label>
+                        <select class="form-control" id="przeznaczenie">
+                            <option disabled selected="selected" >wybierz<option>
+                            <option>rolny (R, Ł, BS) - klasa I - III</option>
+                            <option>rolny (R, Ł, BS) - klasa IV + </option>
+                            <option>budowlany (B) </option>
+                            <option>inny budowlany (BC) </option>
+                            <option>las (LS) </option>
+                            <option>nieużytek (P) z wodą stojącą</option>
+                            <option>nieużytek (P) bez wody stojącej</option>
+                            <option>zadrzewiony</option>
+                            
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment">Twoje dodatkowe uwagi:</label>
+                        <textarea class="form-control" rows="5" id="uwagi" placeholder="wpisz uwagi"></textarea>
+                    </div>
+
+                    <button type="button" class="btn btn-default butt">Zapisz</button>
+
+                </form>
 
                 <hr>
                 <!------------------ Krok ------------------------------------------->
@@ -201,6 +289,41 @@
                     </ul>
                 </div>
 
+                
+                <form>
+                    
+                    <p>Zaznacz dostępy do drogi:</p>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="dostep do drogi gminnej bezpośredni">dostep do drogi gminnej bezpośredni</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="dostep do drogi powiatowej bezpośredni">dostep do drogi powiatowej bezpośredni</label>
+                    </div>             
+                    
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="dostep do drogi publicznej przez drogę prywatną, której zostanie sie właścicielem">dostep do drogi publicznej przez drogę prywatną, której zostanie sie właścicielem</label>
+                    </div>  
+                    
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="ustanowiona służebność przejazdu na dojazd do działki">ustanowiona służebność przejazdu na dojazd do działki</label>
+                    </div>                    
+                    <div class="checkbox">
+                        <label><input type="checkbox" value="brak dostepu do drogi publicznej">brak dostepu do drogi publicznej</label>
+                    </div>
+                    
+               
+                <div class="form-group">
+                    <label for="comment">Twoje dodatkowe uwagi:</label>
+                    <textarea class="form-control" rows="5" id="uwagi" placeholder="wpisz uwagi"></textarea>
+                </div>
+
+                <button type="button" class="btn btn-default butt">Zapisz</button>
+
+                </form>
+
+
+
+
                 <!------------------ Krok ------------------------------------------->
 
                 <hr>
@@ -213,12 +336,66 @@
                 <p>Czy działka znajduje się w granicach stref ochronnych ujęć wody? Granice np. ze Studium uwarunkowań i kierunków zagospodarowania przestrzennego np. http://www.bip.kartuzy.pl/modules.php?name=Content&pa=showpage&pid=209 ograniczenia w Rozporządzenia Dyrektorów Regionalnych Zarządów Gospodarki Wodnej, np. http://www.bip.rzgw.gda.pl/?mod=bip&path=153,112,239
                 </p><br><br>
 
+                <form>
+
+                    <div class="form-group">
+                        <label for="grunty">Działka znajduje się w granicach: </label>
+                        <select class="form-control" id="przeznaczenie">
+                            <option disabled selected="selected" >wybierz<option>
+                            <option>formy ochrony przyrody, np. park krajobrazowy, obszar chronionego krajobrazu</option>
+                            <option>obszarów szczególnego zagrożenia powodzią</option>
+                            <option>terenu udokumentowanych 2012 </option>
+                            <option>obszaru ograniczonego użytkowaniem od lotniska</option>
+                            <option>strefy ochrony konserwatorskiej rejestrowej</option>
+                            <option>strefy ochrony konserwatorskiej woj ewidencji zabytku</option>
+                            <option>stanowiska archeologicznego</option>
+                                                    
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment">Twoje dodatkowe uwagi:</label>
+                        <textarea class="form-control" rows="5" id="uwagi" placeholder="wpisz uwagi"></textarea>
+                    </div>
+
+                    <button type="button" class="btn btn-default butt">Zapisz</button>
+
+                </form>
+
+
 
                 <hr>
+
+                <!------------------ Podgląd ------------------------------------------->
+
+                <section id="podglad" class="container">
+                    <p>Podgląd raportu</p>
+                    <h2>Raport działki nr: <span id="numer"></span></h2>
+
+                    <h3>Sprawdzenie MPZP</h3>
+                    <p id="czyWarZab"></p>
+                    <p>Przeznaczenie działki: <span id="przeznaczenie-raport"></span></p>
+                    <p class="uwagi"> Dodatkowe uwagi: <span id="mpzp-raport"></span></p>
+                    <hr>
+                    <h3>Sprawdzenie sąsiedztwa</h3>
+                    <hr>
+                    <h3>Ustalenie użytku gruntowego</h3>
+                    <p>Rodzaj gruntu to: </p>
+                    <p class="uwagi"> Dodatkowe uwagi: </p>
+                    <hr>
+                    <h3>Ustalenie dostępu do drogi</h3>
+                    <hr>
+                    <h3>Ograniczenia wynikające z innych przepisów</h3>
+
+                    <button type="button" class="btn btn-default butt" onclick="Raport()">Drukuj raport </button><br><br><br><br><br><br><br><br><br><br>
+                </section>
 
             </div>
         </div>
     </div>
+
+
+
 
 
 
